@@ -11,7 +11,6 @@ dateTime=$(date +%Y-%m-%d_%H-%M-%S)
 scriptUrl="//contextgarden.net/standalone/setup/first-setup.sh"
 scriptName="first-setup.sh"
 workDir="luatex"
-echo "# variables"
 echo "# dateTime: $dateTime"
 echo "# scriptUrl: $scriptUrl"
 echo "# scriptName: $scriptName"
@@ -36,7 +35,7 @@ echo "# create path $workDir"
 mkdir "$workDir"
 
 echo "# change directory to $workDir"
-cd "$workDir"
+cd "$workDir" || exit 1
 
 echo "# working dir: cd $workDir"
 readlink -f .
