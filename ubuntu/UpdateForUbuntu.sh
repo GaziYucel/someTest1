@@ -10,12 +10,12 @@ echo "# variables"
 dateTime=$(date +%Y-%m-%d_%H-%M-%S)
 scriptUrl="//contextgarden.net/standalone/setup/first-setup.sh"
 scriptName="first-setup.sh"
-subModulePath="luatex"
+workDir="luatex"
 echo "# variables"
 echo "# dateTime: $dateTime"
 echo "# scriptUrl: $scriptUrl"
 echo "# scriptName: $scriptName"
-echo "# subModulePath: $subModulePath"
+echo "# workDir: $workDir"
 
 echo "# working dir: start UpdateForUbuntu.sh"
 readlink -f .
@@ -29,16 +29,16 @@ else
     echo "# rsync already installed"
 fi
 
-echo "# remove directory $subModulePath recursively"
-rm -rf "$subModulePath"
+echo "# remove directory $workDir recursively"
+rm -rf "$workDir"
 
-echo "# create path $subModulePath"
-mkdir "$subModulePath"
+echo "# create path $workDir"
+mkdir "$workDir"
 
-echo "# change directory to $subModulePath"
-cd "$subModulePath"
+echo "# change directory to $workDir"
+cd "$workDir"
 
-echo "# working dir: cd $subModulePath"
+echo "# working dir: cd $workDir"
 readlink -f .
 
 echo "# get latest install script"
@@ -47,7 +47,7 @@ echo "# get latest install script"
 echo "# execute install script"
 # sh ./$scriptName
 
-echo "# create file $subModulePath/_updated_$dateTime.txt"
+echo "# create file $workDir/_updated_$dateTime.txt"
 echo "$dateTime" > "./_updated_$dateTime.txt"
 
 echo "# change directory to parent"
