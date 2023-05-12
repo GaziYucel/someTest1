@@ -1,10 +1,10 @@
-# @file UpdateForUbuntu.sh
+# @file ubuntu/UpdateForUbuntu.sh
 #
 # Copyright (c) 2023+ TIB Hannover
 # Copyright (c) 2023+ Gazi Yucel
 # Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
 #
-# @brief Submodule to be used in the Open Journal Systems plugin latexConverter.
+# @brief Install/update to latest LuaTex binaries for Ubuntu
 
 echo "# variables"
 dateTime=$(date +%Y-%m-%d_%H-%M-%S)
@@ -41,10 +41,10 @@ echo "# working dir: cd $workDir"
 readlink -f .
 
 echo "# get latest install script"
-# rsync -ptv rsync:$scriptUrl ./$scriptName || exit 1
+rsync -ptv rsync:$scriptUrl ./$scriptName || exit 1
 
 echo "# execute install script"
-# sh ./$scriptName
+sh ./$scriptName
 
 echo "# create file $workDir/_updated_$dateTime.txt"
 echo "$dateTime" > "./_updated_$dateTime.txt"
