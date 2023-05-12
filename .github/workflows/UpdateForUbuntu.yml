@@ -27,6 +27,7 @@ jobs:
 
       - name: execute main job
         run: |
+          workDir="ubuntu"
           dateTime=$(date +%Y-%m-%d_%H-%M-%S)
           branchName="UpdateForUbuntu_$dateTime"
           message="Updated for Ubuntu on $dateTime"
@@ -38,9 +39,15 @@ jobs:
           git config user.name "$GITHUB_USERNAME"
           git config user.email "$GITHUB_USERNAME@users.noreply.github.com"
           
+          echo "# change directory to $workDir"
+          cd $workDir || exit 1
+          
           echo "# sh ./UpdateForUbuntu.sh $GITHUB_USERNAME"
-          sh ./ubuntu/UpdateForUbuntu.sh
-
+          sh ./UpdateForUbuntu.sh
+          
+          echo "# change directory to parent"
+          cd ..
+          
           echo "# checkout to new local branch with name $branchName"
           git checkout -b "$branchName"
 
